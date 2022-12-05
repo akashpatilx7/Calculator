@@ -1,0 +1,61 @@
+/* Makes the styling of the whole Calculator a lot more easier */
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  background: linear-gradient(to right, #00AAFF,#00FF6C);
+}
+
+.calculator-grid{
+  display: grid;
+  margin-top: 2rem;
+  justify-content: center;
+  grid-template-columns: repeat(4, 6rem);
+  grid-template-rows: minmax(7rem,auto) repeat(5,6rem);
+  /* In case, if the user types a very large input number, the Output Division should expand accordingly, so the Maximum Row Length should be given as "auto" only ! */
+}
+
+.calculator-grid >button{
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.calculator-grid >button:hover,
+.calculator-grid >button:focus{
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.span-two{
+  grid-column: span 2;
+  /*  Making the Required Columns to "span 2" instead of the Regular Button Size */
+}
+
+.output{
+  grid-column: 1/-1;
+  /* Making the Output Row take all the Space Available at the Top of the Other Button Rows */
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: .75rem;
+  /* Wrapping of the Output Row onto the next line if a very large Input Number is entered by the User. */
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .previous-operand{
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+}
+
+.output .current-operand{
+  color: white;
+  font-size: 2.5rem;
+}
+
